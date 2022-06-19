@@ -6,8 +6,6 @@ options:
 - text: No, it's not important, these two conditions may have the same or different
     values
 - text: Yes, it should have the same boolean value
-message_correct: Congratulations!
-message_incorrect: Incorrect solution
 files:
 - name: src/Task.java
   visible: true

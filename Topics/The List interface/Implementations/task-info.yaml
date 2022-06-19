@@ -6,8 +6,6 @@ options:
 - text: LinkedArray
 - text: ArrayList
 - text: DoubleLinkedList
-message_correct: Congratulations!
-message_incorrect: Incorrect solution
 files:
 - name: src/Task.java
   visible: true

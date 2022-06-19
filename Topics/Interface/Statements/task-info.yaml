@@ -6,8 +6,6 @@ options:
 - text: A class that implements an interface must implement default and static methods
     declared in the interface.
 - text: A class can implement multiple interfaces.
-message_correct: Congratulations!
-message_incorrect: Incorrect solution
 files:
 - name: src/Task.java
   visible: true

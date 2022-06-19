@@ -7,8 +7,6 @@ options:
 - text: '[a, b, d, c, f, e]'
 - text: '[a, d, c, b, e, f]'
 - text: '[d, c, a, b, f, e]'
-message_correct: Congratulations!
-message_incorrect: Incorrect solution
 files:
 - name: src/Task.java
   visible: true

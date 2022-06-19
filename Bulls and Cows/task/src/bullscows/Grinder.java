@@ -1,7 +1,6 @@
 package bullscows;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Grinder {
@@ -10,8 +9,8 @@ public class Grinder {
     int bulls;
     int cows;
     int[] bullsCows = {0, 0};
-    List<Integer> bullsDiscovered = new ArrayList<>();
-    List<Integer> cowsDiscovered = new ArrayList<>();
+    List<String> bullsDiscovered = new ArrayList<>();
+    List<String> cowsDiscovered = new ArrayList<>();
 
 
     public int getBulls() {
@@ -26,26 +25,25 @@ public class Grinder {
         this.secretCode = secretCode;
     }
 
-    private int[] secretCodeToArray(String code) {
-        return Arrays.stream(code.split("")).mapToInt(Integer::parseInt).toArray();
-    }
 
-    int[] grind(String inputCode) {
-        int[] input = Arrays.stream(inputCode.split("")).mapToInt(Integer::parseInt).toArray();
+    int[] grind(String input) {
+        String[] inputCode = input.split("");
+        String[] secretCodeArray = secretCode.split("");
 
 
-        for (int i = 0; i < input.length; i++) {
 
-            int currentNum = secretCodeToArray(this.secretCode)[i];
+        for (int i = 0; i < inputCode.length; i++) {
 
-            for (int j = 0; j < input.length; j++) {
-                if (currentNum == input[j] && i == j) {
+            String currentElem = secretCodeArray[i];
+
+            for (int j = 0; j < inputCode.length; j++) {
+                if (currentElem.equals(inputCode[j]) && i == j) {
                     bulls++;
-                    bullsDiscovered.add(currentNum);
-                } else if (currentNum == input[j] && !isBull(currentNum)) {
-                    if(!isCow(currentNum)){
+                    bullsDiscovered.add(currentElem);
+                } else if (currentElem.equals(inputCode[j]) && !isBull(currentElem)) {
+                    if (!isCow(currentElem)) {
                         cows++;
-                        cowsDiscovered.add(currentNum);
+                        cowsDiscovered.add(currentElem);
                     }
                 }
             }
@@ -58,18 +56,18 @@ public class Grinder {
         return bullsCows;
     }
 
-    private void zeroTheGrinder(){
+    private void zeroTheGrinder() {
         this.bulls = 0;
         this.cows = 0;
         bullsDiscovered.clear();
         cowsDiscovered.clear();
     }
 
-    private boolean isBull(int num){
-        return bullsDiscovered.contains(num);
+    private boolean isBull(String elem) {
+        return bullsDiscovered.contains(elem);
     }
 
-    private boolean isCow(int num){
-        return cowsDiscovered.contains(num);
+    private boolean isCow(String elem) {
+        return cowsDiscovered.contains(elem);
     }
 }

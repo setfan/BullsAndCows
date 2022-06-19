@@ -6,8 +6,6 @@ options:
 - text: '"SKILL"'
 - text: '"Y"'
 - text: '"-"'
-message_correct: Congratulations!
-message_incorrect: Incorrect solution
 files:
 - name: src/Task.java
   visible: true

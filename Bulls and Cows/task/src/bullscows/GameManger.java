@@ -3,21 +3,23 @@ package bullscows;
 public class GameManger {
     private int numberOfTurns = 1;
     Grinder grinder;
-    OutputManager outputManager = new OutputManager();
     int[] bullsAndCows;
     int codeLength;
+
+    int symbolLength;
+
 
     public GameManger() {
         grinder = new Grinder(generateCode());
     }
 
     protected void startGame() {
-        outputManager.printMessage("Okay, let's start a game!");
+        OutputManager.printMessage("Okay, let's start a game!");
         nextTurn();
     }
 
     protected void nextTurn() {
-        outputManager.printMessage("Turn " + this.numberOfTurns + ":");
+        OutputManager.printMessage("Turn " + this.numberOfTurns + ":");
         increaseNumberOfTurns();
         gameLoop(InputManager.readCode());
     }
@@ -28,17 +30,18 @@ public class GameManger {
 
     private String generateCode() {
         codeLength = InputManager.readCodeLength();
+        symbolLength = InputManager.readSymbolLength();
         return CodeGenerator
-                .generateCode(codeLength);
+                .generateCode(codeLength, symbolLength);
     }
 
     private void gameLoop(String nextCode) {
         bullsAndCows = this.grinder.grind(nextCode);
 
-        outputManager.createOutput(bullsAndCows[0], bullsAndCows[1]);
+        OutputManager.createOutput(bullsAndCows[0], bullsAndCows[1]);
 
         if (bullsAndCows[0] == codeLength) {
-            outputManager.printFinalMessage();
+            OutputManager.printFinalMessage();
         } else {
             nextTurn();
         }

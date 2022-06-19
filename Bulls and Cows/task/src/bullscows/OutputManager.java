@@ -3,17 +3,17 @@ package bullscows;
 public class OutputManager {
     private final int winningScore = 4;
 
-    String bullName = "bull";
-    String cowName = "cow";
+    static String bullName = "bull";
+    static String cowName = "cow";
 
 
-    void createOutput(int bulls, int cows) {
+    static void createOutput(int bulls, int cows) {
 
         if (bulls > 1) {
-            this.bullName = "bulls";
+            bullName = "bulls";
         }
         if (cows > 1) {
-            this.cowName = "cows";
+            cowName = "cows";
         }
         String output = "Grade: ";
         if (bulls == 0 && cows > 0) {
@@ -30,12 +30,12 @@ public class OutputManager {
         printMessage(output);
     }
 
-    protected void printFinalMessage(){
+    static protected void printFinalMessage() {
 
         printMessage("Congratulations! You guessed the secret code.");
     }
 
-    protected void printMessage(String message){
+    static protected void printMessage(String message) {
         System.out.println(message);
     }
 }

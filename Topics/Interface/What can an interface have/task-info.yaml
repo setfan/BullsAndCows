@@ -7,8 +7,6 @@ options:
 - text: non-static methods
 - text: static methods
 - text: non-static fields
-message_correct: Congratulations!
-message_incorrect: Incorrect solution
 files:
 - name: src/Task.java
   visible: true

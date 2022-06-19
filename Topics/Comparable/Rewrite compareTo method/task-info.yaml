@@ -5,8 +5,6 @@ options:
 - text: Delete the current return value and return getModel().compareTo(otherCar.getModel());
 - text: Save the current return value to a variable res, check if it == 0, add res
     = getModel().compareTo(otherCar.getModel()); and return res
-message_correct: Congratulations!
-message_incorrect: Incorrect solution
 files:
 - name: src/Task.java
   visible: true

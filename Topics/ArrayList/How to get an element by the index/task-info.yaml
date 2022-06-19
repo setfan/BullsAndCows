@@ -6,8 +6,6 @@ options:
 - text: list.get(index)
 - text: list.charAt(index)
 - text: list.indexOf(index)
-message_correct: Congratulations!
-message_incorrect: Incorrect solution
 files:
 - name: src/Task.java
   visible: true

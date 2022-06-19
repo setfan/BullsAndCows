@@ -5,8 +5,6 @@ options:
 - text: 'to create a simple string and display it to the standard output. '
 - text: to concatenate multiple strings into a single one.
 - text: to remove elements from a string multiple times.
-message_correct: Congratulations!
-message_incorrect: Incorrect solution
 files:
 - name: src/Task.java
   visible: true

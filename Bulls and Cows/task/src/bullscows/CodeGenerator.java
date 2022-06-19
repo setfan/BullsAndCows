@@ -1,27 +1,41 @@
 package bullscows;
 
 import java.util.Arrays;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 public class CodeGenerator {
+    private static final Random random = new Random();
+    private static String code = "";
+    private static final String symbols = "0123456789abcdefghijklmnopqrstuvwxyz";
 
-    public static String generateCode(int length) {
+    private static void appendElem(char ch) {
+        code += Character.toString(ch);
+    }
 
-        String number = "";
+    public static String generateCode(int codeLength, int symbolLength) {
 
-        while (number.length() < 10) {
-            number = Arrays.stream(randomGenerator().split(""))
+        char ch;
+
+        while (code.length() < codeLength) {
+
+            ch = symbols.charAt(random.nextInt(symbolLength));
+            appendElem(ch);
+
+
+            code = Arrays.stream(code.split(""))
                     .distinct()
                     .collect(Collectors.joining());
         }
 
-        return number.substring(0, length);
-    }
+        String letterEnd = Character.toString(symbols.charAt(symbolLength - 1));
 
+        String incognitoCode = code.replaceAll("[a-z\\d]", "*");
 
-    private static String randomGenerator() {
-        long pseudoRandomNumber = System.nanoTime();
+        OutputManager.printMessage("The secret is prepared: " +
+                incognitoCode + " (0-9, a-" + letterEnd + ").");
 
-        return String.valueOf(pseudoRandomNumber);
+        return code;
+
     }
 }

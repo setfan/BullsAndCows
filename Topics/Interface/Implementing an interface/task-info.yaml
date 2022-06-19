@@ -6,8 +6,6 @@ options:
 - text: 'class A : B { /* body */ }'
 - text: class A inherits B { /* body */ }
 - text: class A extends B { /* body */ }
-message_correct: Congratulations!
-message_incorrect: Incorrect solution
 files:
 - name: src/Task.java
   visible: true

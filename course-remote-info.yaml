@@ -19,10 +19,10 @@ stages:
   is_completed: true
 - id: 291
   step: 5433
-  is_completed: false
+  is_completed: true
 - id: 292
   step: 5434
-  is_completed: false
+  is_completed: true
 - id: 293
   step: 5435
   is_completed: false
@@ -69,12 +69,14 @@ topics:
     theory_id: 3739
   - title: Computer algorithms
     theory_id: 16547
-  - title: Immutability
-    theory_id: 7929
   - title: The big O notation
     theory_id: 16699
+  - title: Best, average and worst cases
+    theory_id: 20084
   - title: Data structures
     theory_id: 16927
+  - title: Immutability
+    theory_id: 7929
   - title: Boolean and logical operations
     theory_id: 3516
   - title: Relational operators

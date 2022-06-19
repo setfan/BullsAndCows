@@ -5,8 +5,6 @@ options:
 - text: Objects.equals(city, "Melbourne")
 - text: city.equals("Sydney")
 - text: if (city != null) { System.out.println(city.substring(0, 2)); }
-message_correct: Congratulations!
-message_incorrect: Incorrect solution
 files:
 - name: src/Task.java
   visible: true

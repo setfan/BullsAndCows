@@ -5,8 +5,6 @@ options:
 - text: nothing happens
 - text: the new element will be set
 - text: it throws <b>UnsupportedOperationException</b>
-message_correct: Congratulations!
-message_incorrect: Incorrect solution
 files:
 - name: src/Task.java
   visible: true

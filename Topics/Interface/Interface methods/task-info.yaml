@@ -5,8 +5,6 @@ options:
 - text: Static methods in an interface cannot have a body.
 - text: An interface cannot include static and non-static methods at the same time.
 - text: Default methods in an interface should have a body.
-message_correct: Congratulations!
-message_incorrect: Incorrect solution
 files:
 - name: src/Task.java
   visible: true

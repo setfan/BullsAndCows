@@ -5,8 +5,6 @@ options:
 - text: nothing
 - text: the code will throw a run-time exception
 - text: the code output will be different
-message_correct: Congratulations!
-message_incorrect: Incorrect solution
 files:
 - name: src/Task.java
   visible: true

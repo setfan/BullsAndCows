@@ -8,8 +8,6 @@ options:
 - text: It is a negative value if the current object is greater than the parameter
     object
 - text: It is a negative value if the current object is less than the parameter object
-message_correct: Congratulations!
-message_incorrect: Incorrect solution
 files:
 - name: src/Task.java
   visible: true

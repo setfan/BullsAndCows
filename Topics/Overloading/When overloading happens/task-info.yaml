@@ -7,8 +7,6 @@ options:
 - text: several methods have the same name and the same bodies
 - text: several methods have the same name and parameters but different return types
 - text: several methods are public
-message_correct: Congratulations!
-message_incorrect: Incorrect solution
 files:
 - name: src/Task.java
   visible: true

@@ -5,8 +5,6 @@ options:
 - text: List&lt;String&gt; list = new ArrayList&lt;&gt;();
 - text: List&lt;String&gt; list = Arrays.asList();
 - text: List&lt;String&gt; list = new LinkedList&lt;&gt;();
-message_correct: Congratulations!
-message_incorrect: Incorrect solution
 files:
 - name: src/Task.java
   visible: true

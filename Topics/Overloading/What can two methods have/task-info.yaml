@@ -4,8 +4,6 @@ options:
 - text: the same name, the same returning type but different type of arguments.
 - text: the same name, the same number and type of arguments.
 - text: the same name, the same returning type, the same number and type of arguments.
-message_correct: Congratulations!
-message_incorrect: Incorrect solution
 files:
 - name: src/Task.java
   visible: true

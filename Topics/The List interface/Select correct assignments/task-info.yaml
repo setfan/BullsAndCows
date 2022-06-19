@@ -6,8 +6,6 @@ options:
 - text: List&lt;Integer&gt; list = new ArrayList&lt;&gt;();
 - text: Collection&lt;Integer&gt; list = new ArrayList&lt;&gt;();
 - text: ' LinkedList&lt;Integer&gt; list = new ArrayList&lt;&gt;();'
-message_correct: Congratulations!
-message_incorrect: Incorrect solution
 files:
 - name: src/Task.java
   visible: true
