@@ -14,8 +14,10 @@ public class GameManger {
     }
 
     protected void startGame() {
-        OutputManager.printMessage("Okay, let's start a game!");
-        nextTurn();
+        if (codeLength > 0 && symbolLength > 0) {
+            OutputManager.printMessage("Okay, let's start a game!");
+            nextTurn();
+        }
     }
 
     protected void nextTurn() {
@@ -30,7 +32,11 @@ public class GameManger {
 
     private String generateCode() {
         codeLength = InputManager.readCodeLength();
-        symbolLength = InputManager.readSymbolLength();
+
+        if (codeLength > 0) {
+            symbolLength = InputManager.readSymbolLength();
+        }
+
         return CodeGenerator
                 .generateCode(codeLength, symbolLength);
     }

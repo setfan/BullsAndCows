@@ -408,6 +408,263 @@ files:
         }
     }
   learner_created: false
+- name: src/bullscows/Grinder.java
+  visible: true
+  text: |
+    package bullscows;
+
+    import java.util.ArrayList;
+    import java.util.List;
+
+    public class Grinder {
+
+        String secretCode;
+        int bulls;
+        int cows;
+        int[] bullsCows = {0, 0};
+        List<String> bullsDiscovered = new ArrayList<>();
+        List<String> cowsDiscovered = new ArrayList<>();
+
+
+        public int getBulls() {
+            return bulls;
+        }
+
+        public int getCows() {
+            return cows;
+        }
+
+        public Grinder(String secretCode) {
+            this.secretCode = secretCode;
+        }
+
+
+        int[] grind(String input) {
+            String[] inputCode = input.split("");
+            String[] secretCodeArray = secretCode.split("");
+
+
+
+            for (int i = 0; i < inputCode.length; i++) {
+
+                String currentElem = secretCodeArray[i];
+
+                for (int j = 0; j < inputCode.length; j++) {
+                    if (currentElem.equals(inputCode[j]) && i == j) {
+                        bulls++;
+                        bullsDiscovered.add(currentElem);
+                    } else if (currentElem.equals(inputCode[j]) && !isBull(currentElem)) {
+                        if (!isCow(currentElem)) {
+                            cows++;
+                            cowsDiscovered.add(currentElem);
+                        }
+                    }
+                }
+            }
+            bullsCows[0] = getBulls();
+            bullsCows[1] = getCows();
+
+            zeroTheGrinder();
+
+            return bullsCows;
+        }
+
+        private void zeroTheGrinder() {
+            this.bulls = 0;
+            this.cows = 0;
+            bullsDiscovered.clear();
+            cowsDiscovered.clear();
+        }
+
+        private boolean isBull(String elem) {
+            return bullsDiscovered.contains(elem);
+        }
+
+        private boolean isCow(String elem) {
+            return cowsDiscovered.contains(elem);
+        }
+    }
+  learner_created: true
+- name: src/bullscows/InputManager.java
+  visible: true
+  text: |
+    package bullscows;
+
+    import java.util.Scanner;
+
+    public class InputManager {
+
+        private static Scanner scanner;
+
+
+        protected static int readCodeLength() {
+            System.out.println("Please, enter the secret code's length:");
+            scanner = new Scanner(System.in);
+
+            return scanner.nextInt();
+
+        }
+
+        protected static int readSymbolLength() {
+            System.out.println("Input the number of possible symbols in the code:");
+            scanner = new Scanner(System.in);
+
+            return scanner.nextInt();
+        }
+
+        protected static String readCode() {
+            scanner = new Scanner(System.in);
+            return scanner.nextLine();
+        }
+    }
+  learner_created: true
+- name: src/bullscows/GameManger.java
+  visible: true
+  text: |
+    package bullscows;
+
+    public class GameManger {
+        private int numberOfTurns = 1;
+        Grinder grinder;
+        int[] bullsAndCows;
+        int codeLength;
+
+        int symbolLength;
+
+
+        public GameManger() {
+            grinder = new Grinder(generateCode());
+        }
+
+        protected void startGame() {
+            OutputManager.printMessage("Okay, let's start a game!");
+            nextTurn();
+        }
+
+        protected void nextTurn() {
+            OutputManager.printMessage("Turn " + this.numberOfTurns + ":");
+            increaseNumberOfTurns();
+            gameLoop(InputManager.readCode());
+        }
+
+        private void increaseNumberOfTurns() {
+            this.numberOfTurns++;
+        }
+
+        private String generateCode() {
+            codeLength = InputManager.readCodeLength();
+            symbolLength = InputManager.readSymbolLength();
+            return CodeGenerator
+                    .generateCode(codeLength, symbolLength);
+        }
+
+        private void gameLoop(String nextCode) {
+            bullsAndCows = this.grinder.grind(nextCode);
+
+            OutputManager.createOutput(bullsAndCows[0], bullsAndCows[1]);
+
+            if (bullsAndCows[0] == codeLength) {
+                OutputManager.printFinalMessage();
+            } else {
+                nextTurn();
+            }
+        }
+    }
+  learner_created: true
+- name: src/bullscows/CodeGenerator.java
+  visible: true
+  text: |
+    package bullscows;
+
+    import java.util.Arrays;
+    import java.util.Random;
+    import java.util.stream.Collectors;
+
+    public class CodeGenerator {
+        private static final Random random = new Random();
+        private static String code = "";
+        private static final String symbols = "0123456789abcdefghijklmnopqrstuvwxyz";
+
+        private static void appendElem(char ch) {
+            code += Character.toString(ch);
+        }
+
+        public static String generateCode(int codeLength, int symbolLength) {
+
+            char ch;
+
+            while (code.length() < codeLength) {
+
+                ch = symbols.charAt(random.nextInt(symbolLength));
+                appendElem(ch);
+
+
+                code = Arrays.stream(code.split(""))
+                        .distinct()
+                        .collect(Collectors.joining());
+            }
+
+            String letterEnd = Character.toString(symbols.charAt(symbolLength - 1));
+
+            String incognitoCode = code.replaceAll("[a-z\\d]", "*");
+
+            OutputManager.printMessage("The secret is prepared: " +
+                    incognitoCode + " (0-9, a-" + letterEnd + ").");
+
+            return code;
+
+        }
+    }
+  learner_created: true
+- name: src/bullscows/OutputManager.java
+  visible: true
+  text: |-
+    package bullscows;
+
+    public class OutputManager {
+        private final int winningScore = 4;
+
+        static String bullName = "bull";
+        static String cowName = "cow";
+
+
+        static void createOutput(int bulls, int cows) {
+
+            if (bulls > 1) {
+                bullName = "bulls";
+            }
+            if (cows > 1) {
+                cowName = "cows";
+            }
+            String output = "Grade: ";
+            if (bulls == 0 && cows > 0) {
+                output = output + cows + " " + cowName;
+            } else if (bulls > 0 && cows == 0) {
+                output = output + bulls + " " + bullName;
+            } else if (bulls == 0 && cows == 0) {
+                output = output + " None.";
+            } else {
+                output = output + bulls + " " + bullName + " and " + cows + " " + cowName;
+            }
+
+
+            printMessage(output);
+        }
+
+        static protected void printFinalMessage() {
+
+            printMessage("Congratulations! You guessed the secret code.");
+        }
+
+        static protected void printMessage(String message) {
+            System.out.println(message);
+        }
+    }
+  learner_created: true
 feedback_link: https://hyperskill.org/learn/step/5435#comment
-status: Unchecked
+status: Solved
+feedback:
+  message: Well done! You've finished the project. Select a new project on <a href="https://hyperskill.org/projects">JetBrains
+    Academy</a> to continue learning.
+  time: Sun, 19 Jun 2022 19:58:59 UTC
 record: -1

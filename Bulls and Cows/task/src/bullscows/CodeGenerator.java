@@ -17,23 +17,29 @@ public class CodeGenerator {
 
         char ch;
 
-        while (code.length() < codeLength) {
+        try {
 
-            ch = symbols.charAt(random.nextInt(symbolLength));
-            appendElem(ch);
+            while (code.length() < codeLength) {
+
+                ch = symbols.charAt(random.nextInt(symbolLength));
+                appendElem(ch);
 
 
-            code = Arrays.stream(code.split(""))
-                    .distinct()
-                    .collect(Collectors.joining());
+                code = Arrays.stream(code.split(""))
+                        .distinct()
+                        .collect(Collectors.joining());
+            }
+
+
+            String letterEnd = Character.toString(symbols.charAt(symbolLength - 1));
+
+            String incognitoCode = code.replaceAll("[a-z\\d]", "*");
+
+            OutputManager.printMessage("The secret is prepared: " +
+                    incognitoCode + " (0-9, a-" + letterEnd + ").");
+        } catch (Exception ignored) {
+
         }
-
-        String letterEnd = Character.toString(symbols.charAt(symbolLength - 1));
-
-        String incognitoCode = code.replaceAll("[a-z\\d]", "*");
-
-        OutputManager.printMessage("The secret is prepared: " +
-                incognitoCode + " (0-9, a-" + letterEnd + ").");
 
         return code;
 

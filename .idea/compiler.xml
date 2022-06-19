@@ -61,6 +61,10 @@
       <module name="Bulls_and_Cows.Topics-Errors_in_programs-Print_the_age.main" target="11" />
       <module name="Bulls_and_Cows.Topics-Errors_in_programs-Theory.main" target="11" />
       <module name="Bulls_and_Cows.Topics-Errors_in_programs-What's_wrong.main" target="11" />
+      <module name="Bulls_and_Cows.Topics-Exception_handling-Converting_and_multiplying.main" target="11" />
+      <module name="Bulls_and_Cows.Topics-Exception_handling-Determine_a_block_for_handling_exceptions.main" target="11" />
+      <module name="Bulls_and_Cows.Topics-Exception_handling-Executed_blocks.main" target="11" />
+      <module name="Bulls_and_Cows.Topics-Exception_handling-Theory.main" target="11" />
       <module name="Bulls_and_Cows.Topics-Floating-point_types-Determine_the_integer_part.main" target="11" />
       <module name="Bulls_and_Cows.Topics-Floating-point_types-Determine_the_result.main" target="11" />
       <module name="Bulls_and_Cows.Topics-Floating-point_types-Distance.main" target="11" />
@@ -93,6 +97,14 @@
       <module name="Bulls_and_Cows.Topics-Hiding_and_overriding-Shapes_area.main" target="11" />
       <module name="Bulls_and_Cows.Topics-Hiding_and_overriding-Theory.main" target="11" />
       <module name="Bulls_and_Cows.Topics-Hiding_and_overriding-Which_methods_will_be_overridden.main" target="11" />
+      <module name="Bulls_and_Cows.Topics-Hierarchy_of_exceptions-BadRequestException.main" target="11" />
+      <module name="Bulls_and_Cows.Topics-Hierarchy_of_exceptions-Base_class.main" target="11" />
+      <module name="Bulls_and_Cows.Topics-Hierarchy_of_exceptions-Checked_exceptions.main" target="11" />
+      <module name="Bulls_and_Cows.Topics-Hierarchy_of_exceptions-Overview_the_hierarchy.main" target="11" />
+      <module name="Bulls_and_Cows.Topics-Hierarchy_of_exceptions-Overview_the_hierarchy__1_.main" target="11" />
+      <module name="Bulls_and_Cows.Topics-Hierarchy_of_exceptions-The_base_class.main" target="11" />
+      <module name="Bulls_and_Cows.Topics-Hierarchy_of_exceptions-Theory.main" target="11" />
+      <module name="Bulls_and_Cows.Topics-Hierarchy_of_exceptions-Unchecked_exceptions.main" target="11" />
       <module name="Bulls_and_Cows.Topics-Inheritance-Classes_for_Hospital.main" target="11" />
       <module name="Bulls_and_Cows.Topics-Inheritance-The_lost_modifier.main" target="11" />
       <module name="Bulls_and_Cows.Topics-Inheritance-Theory.main" target="11" />
